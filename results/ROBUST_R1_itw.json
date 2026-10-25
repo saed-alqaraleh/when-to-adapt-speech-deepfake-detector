@@ -1,0 +1,182 @@
+{
+  "dataset": "itw",
+  "status": "exploratory (EXPLORATORY_PLAN_R1.json)",
+  "deviations": {
+    "D1": "speaker-grouped split: when one speaker held almost the whole reference (fewer than 30 calibration clips), speakers were re-drawn with a cap, else random halves were used; added 21 Oct 2026 after a crash, before any robustness result was read"
+  },
+  "plan_sha256": "1ae202c99a8ccad7297e2afd310b3e1e3601d1d6c045867c5cb35d87b998f548",
+  "natural_share": 0.372,
+  "grp_split_counts": {
+    "grouped or random (before D1)": 131,
+    "grouped": 67,
+    "random": 31,
+    "rebalanced": 11
+  },
+  "consistency": {
+    "cells": 240,
+    "max_abs_eer_diff": 0.0
+  },
+  "criteria": {
+    "PGA-R": {
+      "fix_works_disjoint": false,
+      "gain_kept_overlap": false,
+      "disjoint_max_frr": 0.10613720806794051,
+      "disjoint_max_frr_excess_over_frozen": 0.0,
+      "disjoint_max_eer_ratio": 1.9241938823685636,
+      "overlap_eer_ratio_natural": 1.0,
+      "overlap_max_frr": 0.05067499999999997
+    },
+    "PGA+guard": {
+      "fix_works_disjoint": true,
+      "gain_kept_overlap": false,
+      "disjoint_max_frr": 0.11416666666666664,
+      "disjoint_max_frr_excess_over_frozen": 0.0,
+      "disjoint_max_eer_ratio": 1.0,
+      "overlap_eer_ratio_natural": 1.0,
+      "overlap_max_frr": 0.05067499999999997
+    },
+    "PGA-grp+guard": {
+      "fix_works_disjoint": false,
+      "gain_kept_overlap": false,
+      "disjoint_max_frr": 0.1045979299363057,
+      "disjoint_max_frr_excess_over_frozen": 0.0,
+      "disjoint_max_eer_ratio": 1.9505355889684626,
+      "overlap_eer_ratio_natural": 1.0,
+      "overlap_max_frr": 0.05067499999999997
+    },
+    "PGA (confirmatory)": {
+      "fix_works_disjoint": false,
+      "gain_kept_overlap": false,
+      "disjoint_max_frr": 0.8055391642521726,
+      "disjoint_max_frr_excess_over_frozen": 0.7318459323481703,
+      "disjoint_max_eer_ratio": 2.908658585910058,
+      "overlap_eer_ratio_natural": 1.0,
+      "overlap_max_frr": 0.05067499999999997
+    }
+  },
+  "guard_unavailable_cells": {},
+  "min_calibration_size": {
+    "adapt": 500,
+    "adapt_grp": 31,
+    "adapt_nap_grp": 31,
+    "coral": 500,
+    "diag": 500,
+    "frozen": 500,
+    "nnpu": 500,
+    "oracle_sup": 500
+  },
+  "guard_sweep": {
+    "adapt gated+guard rho=0.25": {
+      "max_eer_ratio_disjoint": 1.0,
+      "max_frr_disjoint": 0.11416666666666664,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt gated+guard rho=0.5": {
+      "max_eer_ratio_disjoint": 1.0,
+      "max_frr_disjoint": 0.11416666666666664,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt gated+guard rho=0.75": {
+      "max_eer_ratio_disjoint": 1.0,
+      "max_frr_disjoint": 0.11416666666666664,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt gated+guard rho=0.9": {
+      "max_eer_ratio_disjoint": 1.0,
+      "max_frr_disjoint": 0.11416666666666664,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt_nap_grp gated+guard rho=0.25": {
+      "max_eer_ratio_disjoint": 2.1339374201100334,
+      "max_frr_disjoint": 0.10613720806794051,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt_nap_grp gated+guard rho=0.5": {
+      "max_eer_ratio_disjoint": 1.9241938823685636,
+      "max_frr_disjoint": 0.10613720806794051,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt_nap_grp gated+guard rho=0.75": {
+      "max_eer_ratio_disjoint": 1.7771653676922754,
+      "max_frr_disjoint": 0.10613720806794051,
+      "eer_ratio_overlap_natural": 1.0
+    },
+    "adapt_nap_grp gated+guard rho=0.9": {
+      "max_eer_ratio_disjoint": 1.7771653676922754,
+      "max_frr_disjoint": 0.10613720806794051,
+      "eer_ratio_overlap_natural": 1.0
+    }
+  },
+  "eer_ratio_vs_frozen": {
+    "adapt (always)": {
+      "disjoint|0.05": 5.787246931915893,
+      "disjoint|0.2": 4.967123478908307,
+      "disjoint|0.372": 4.0735722586477445,
+      "disjoint|0.5": 4.406432965241237,
+      "disjoint|0.8": 3.608148743257203,
+      "disjoint|0.9": 3.3580323334917246,
+      "overlap|0.05": 2.372883686215973,
+      "overlap|0.2": 1.547183477021565,
+      "overlap|0.372": 1.1790052618495592,
+      "overlap|0.5": 0.9736467769708768,
+      "overlap|0.8": 0.6117026201277658,
+      "overlap|0.9": 0.4623525792226436
+    },
+    "nnpu (always)": {
+      "disjoint|0.05": 3.0716602829672484,
+      "disjoint|0.2": 2.01579841317853,
+      "disjoint|0.372": 1.781797092566316,
+      "disjoint|0.5": 1.6581190246794637,
+      "disjoint|0.8": 1.061540227246643,
+      "disjoint|0.9": 1.478442642566688,
+      "overlap|0.05": 1.0973013316573046,
+      "overlap|0.2": 0.9276886054064155,
+      "overlap|0.372": 0.6700765618786404,
+      "overlap|0.5": 0.5810436475256419,
+      "overlap|0.8": 0.6042264605129153,
+      "overlap|0.9": 0.8361398830889138
+    },
+    "coral (always)": {
+      "disjoint|0.05": 0.9914015477214101,
+      "disjoint|0.2": 0.9925312361851137,
+      "disjoint|0.372": 0.9846002788930817,
+      "disjoint|0.5": 0.9822871118357667,
+      "disjoint|0.8": 0.9753242281648113,
+      "disjoint|0.9": 0.9725164759778947,
+      "overlap|0.05": 0.9918490002749736,
+      "overlap|0.2": 0.9914020700450925,
+      "overlap|0.372": 0.9861154612380494,
+      "overlap|0.5": 0.9832297671632851,
+      "overlap|0.8": 0.9713683918155726,
+      "overlap|0.9": 0.9707312070556864
+    },
+    "diag (always)": {
+      "disjoint|0.05": 0.9996873290080511,
+      "disjoint|0.2": 0.997417343353731,
+      "disjoint|0.372": 0.9939558512440447,
+      "disjoint|0.5": 0.9932557622470912,
+      "disjoint|0.8": 0.9903592333295076,
+      "disjoint|0.9": 0.9862341676339776,
+      "overlap|0.05": 0.9987626193188516,
+      "overlap|0.2": 0.994906661059321,
+      "overlap|0.372": 0.9938509911517616,
+      "overlap|0.5": 0.9921389533577899,
+      "overlap|0.8": 0.9893528377002129,
+      "overlap|0.9": 0.9873859091375243
+    },
+    "oracle_sup": {
+      "disjoint|0.05": 0.16428906433205634,
+      "disjoint|0.2": 0.11203145722329483,
+      "disjoint|0.372": 0.09712085754127543,
+      "disjoint|0.5": 0.0978285036685686,
+      "disjoint|0.8": 0.10418914266039221,
+      "disjoint|0.9": 0.11882863934033247,
+      "overlap|0.05": 0.15500648151785335,
+      "overlap|0.2": 0.11558141164926031,
+      "overlap|0.372": 0.10467423850028128,
+      "overlap|0.5": 0.10032192857677602,
+      "overlap|0.8": 0.09913433941301704,
+      "overlap|0.9": 0.10462516664957403
+    }
+  }
+}

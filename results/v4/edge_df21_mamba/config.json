@@ -1,0 +1,10 @@
+{
+  "n_tasks": 200,
+  "keys_sha": "ede05dfbf864aed2",
+  "prereg_sha256": "8c661f44bc6a204f83bc4bc0d17034ad4a134d92752426b639aa6fb3bb822fb8",
+  "kind": "edge",
+  "corpus": "df21",
+  "detector": "mamba",
+  "seed": 2026,
+  "created": "2026-10-22 21:59:52"
+}

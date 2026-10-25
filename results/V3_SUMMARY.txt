@@ -1,0 +1,15 @@
+v3 verdict
+SSL-AASIST  df21: H1=pass H2=pass H3=pass H4=pass H5=pass
+SSL-AASIST  asv5: H1=pass H2=pass H3=pass H4=pass H5=pass
+AASIST      df21: H1=pass H2=pass H3=fail H4=pass H5=pass
+AASIST      asv5: H1=fail H2=pass H3=pass H4=pass H5=pass
+XLSR-Mamba  df21: H1=pass H2=pass H3=pass H4=pass H5=pass
+XLSR-Mamba  asv5: H1=pass H2=pass H3=pass H4=pass H5=pass
+PGA-G GENERALISES to XLSR-Mamba (H1-H5 on both corpora)
+PGA-G safety does not fully generalise to AASIST (see per-hypothesis results)
+sslaasist|df21 stream: adapted in 100% of campaign windows and 0% of background windows; campaign EER 8.1% -> 3.9%
+sslaasist|asv5 stream: adapted in 100% of campaign windows and 0% of background windows; campaign EER 16.1% -> 6.9%
+aasist|df21 stream: adapted in 100% of campaign windows and 0% of background windows; campaign EER 16.8% -> 12.9%
+aasist|asv5 stream: adapted in 0% of campaign windows and 0% of background windows; campaign EER 35.5% -> 35.5%
+mamba|df21 stream: adapted in 100% of campaign windows and 0% of background windows; campaign EER 4.3% -> 2.3%
+mamba|asv5 stream: adapted in 100% of campaign windows and 0% of background windows; campaign EER 17.5% -> 6.7%

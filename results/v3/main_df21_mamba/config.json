@@ -1,0 +1,11 @@
+{
+  "n_tasks": 240,
+  "keys_sha": "d58bc3533fe313e9",
+  "prereg_sha256": "4875d1258f4a4f06e20b1c699e8424a7c186ad6e123451490647ab53ac01f16c",
+  "kind": "main",
+  "corpus": "df21",
+  "detector": "mamba",
+  "seed": 2026,
+  "n_rows": 611829,
+  "created": "2026-10-22 16:31:45"
+}

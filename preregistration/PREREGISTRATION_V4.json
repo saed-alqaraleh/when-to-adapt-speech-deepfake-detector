@@ -1,0 +1,15 @@
+{
+  "preregistration": {
+    "title": "Threat-model analyses, detector-agnostic guard and decision cost (v4)",
+    "fixed_on": "2026-10-22, before any v4 result (results/v4) existed; all inputs are the existing v3 and earlier scores",
+    "status": "pre-specified exploratory analyses; every result is reported, none is a confirmatory decision",
+    "method": "unchanged PGA-G (alpha 0.05, 5-fold PU logistic regression C 0.1, gate 0.80, guard 0.5) unless stated",
+    "detectors_and_corpora": "SSL-AASIST, XLSR-Mamba, AASIST on ASVspoof 2021 DF and ASVspoof 5 (complete evaluation sets)",
+    "poison": "matched 1,000-recording reference in which a fraction r of 0, 0.01, 0.02, 0.05, 0.10, 0.20 is replaced by spoofed trials, before the random train/calibration halving; scenario 'random': spoofs of any attack; scenario 'targeted': all planted spoofs from one attack drawn at random per repetition (the attacker enrols deepfakes of the system used in the campaign); traffic spoof shares 0.05, 0.50, 0.90; source groups of planted spoofs excluded from the traffic; 20 repetitions; reported: gate and adaptation rates, guard statistic, EER, anchor FRR/FAR/HTER of the frozen detector and of PGA-G (both thresholded with the poisoned reference), and for 'targeted' the EER and anchor FAR on the planted attack's traffic trials",
+    "edge": "spoof shares 0.70, 0.75, 0.78, 0.82, 0.85 (an attacker diluting the campaign to stay near the gate), matched and speaker-disjoint references, 20 repetitions; reported: EER, anchor FRR and HTER of PGA-G relative to the frozen detector; together with all v3 main conditions this measures the fail-safe property (PGA-G not worse than the frozen detector for any traffic composition)",
+    "agnostic": "the guard statistic computed from a PU classifier on a self-supervised probe instead of the adaptation features: probe = SSL-AASIST time-mean XLS-R features for AASIST and XLSR-Mamba, XLSR-Mamba's for SSL-AASIST; adaptation, gate and anchor unchanged; same references, traffic and folds as the v3 main analysis (the PGA-G rows with the original guard are reproduced exactly); hypotheses H2-H5 of v3 evaluated for both guards",
+    "timing": "wall-clock time of one decision (gate estimate, 5-fold cross-fitted classifier, guard estimate, fold-wise anchors) on traffic of 1,000, 5,000, 12,000 trials with 160- and 1,024-dimensional features, one thread and all threads, 5 repetitions, on the Colab CPU (model recorded)"
+  },
+  "sha256": "8c661f44bc6a204f83bc4bc0d17034ad4a134d92752426b639aa6fb3bb822fb8",
+  "written": "2026-10-22 19:13:44 UTC"
+}

@@ -1,0 +1,27 @@
+{
+  "preregistration": {
+    "title": "Prevalence-gated adaptation (PGA) on ASVspoof 2021 DF",
+    "fixed_on": "2026-10-21, before any ASVspoof 2021 DF score was computed",
+    "discovery_data": "In-the-Wild (kill test, 21 Oct 2026): adaptation helped only at a 96% spoof share",
+    "confirmatory_data": "SpeechAntiSpoofingBenchmarks/ASVspoof2021_DF, all 80 shards, revision pinned in runs/df21_v1/config.json",
+    "detector": "authors' SSL-AASIST LA checkpoint, frozen; score = bona - spoof logit",
+    "gate": 0.8,
+    "gate_estimator": "pilot_pga_g.estimate_bona_share on the frozen score (calibration half of the reference vs traffic)",
+    "adapted_feature_primary": "ssl1024 (time-mean XLS-R features)",
+    "adapted_feature_secondary": "emb160 (AASIST readout)",
+    "classifier": "StandardScaler + LogisticRegression(C=0.1, class_weight=balanced), 5-fold cross-fitting, fold-matched calibration",
+    "anchor": "fold-matched conformal genuine anchor, alpha = 0.05",
+    "reference": "1000 genuine clips: 500 train, 500 calibration; speaker-overlap mode primary, speaker-disjoint secondary",
+    "spoof_shares": "0.05, 0.20, 0.50, 0.80, 0.90 and the natural share of the corpus",
+    "traffic_size": "min(12000, available)",
+    "repetitions": 20,
+    "H1": "gain: at natural share and 0.90, mean EER(PGA) <= 0.85 x mean EER(frozen) and mean anchor HTER(PGA) < frozen",
+    "H2": "safety: at 0.05, 0.20, 0.50, mean EER(PGA) <= 1.02 x mean EER(frozen)",
+    "H3": "FRR: mean anchor FRR(PGA) <= 0.06 in every cell",
+    "H4": "shortcut: mean shortcut AUC(PGA) <= 0.60 in every cell",
+    "decision": "H1-H4 all pass -> method confirmed; otherwise route 1"
+  },
+  "written": "2026-10-21 11:52:31 UTC",
+  "public_record_status": "terminology-normalized copy of historical protocol; source checksum in provenance/record-scope.json",
+  "original_file_sha256": "d44f2778b2725db45bf2a8b630d04d4a1804773e65c32b2309861c74738c5b2c"
+}

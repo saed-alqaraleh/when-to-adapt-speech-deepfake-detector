@@ -1,0 +1,80 @@
+{
+  "generated": "2026-10-21 11:10:40",
+  "G0": {
+    "eer_within_1pt": true,
+    "hter_in_35_45": true,
+    "pass": true
+  },
+  "G1": {
+    "max_mean_frr": 0.05287499999999997,
+    "frr_ok": true,
+    "max_hter_gap_vs_gmm2": -0.019263333333333355,
+    "not_worse_than_gmm2_plus_0.5pt": true,
+    "reps_per_cell": 50,
+    "pass": true,
+    "reference_mode": "overlap (primary, pre-registered)"
+  },
+  "G1_stress_disjoint": {
+    "max_mean_frr": 0.11818518518518514,
+    "frr_ok": false,
+    "max_hter_gap_vs_gmm2": -0.0018843750000000214,
+    "not_worse_than_gmm2_plus_0.5pt": true,
+    "reps_per_cell": 50,
+    "pass": false
+  },
+  "stageB_emb160": {
+    "G2": {
+      "eer_ratio_adapted_over_frozen": {
+        "0.2": 1.3600018573551265,
+        "0.5": 0.9711983286076706
+      },
+      "pass": false
+    },
+    "G3": {
+      "max_shortcut_auc": 0.8033552333333333,
+      "pass": false
+    },
+    "G4": {
+      "prior_abs_error": {
+        "0.5": {
+          "frozen": 0.005196893318247464,
+          "pu_adapted": 0.01445211998975482
+        },
+        "0.96": {
+          "frozen": 0.019289493507444133,
+          "pu_adapted": 0.018494672327715178
+        }
+      },
+      "pass": false
+    },
+    "role": "primary (pre-registered)"
+  },
+  "stageB_ssl1024": {
+    "G2": {
+      "eer_ratio_adapted_over_frozen": {
+        "0.2": 1.540165304606241,
+        "0.5": 1.0080584987315326
+      },
+      "pass": false
+    },
+    "G3": {
+      "max_shortcut_auc": 0.992421,
+      "pass": false
+    },
+    "G4": {
+      "prior_abs_error": {
+        "0.5": {
+          "frozen": 0.005196893318247464,
+          "pu_adapted": 0.010173855352733963
+        },
+        "0.96": {
+          "frozen": 0.019289493507444133,
+          "pu_adapted": 0.0024803102714440195
+        }
+      },
+      "pass": false
+    },
+    "role": "secondary (exploratory)"
+  },
+  "decision": "PIVOT (anchor holds; ranking repair or shortcut gate failed)"
+}

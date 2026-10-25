@@ -1,0 +1,11 @@
+{
+  "n_tasks": 100,
+  "keys_sha": "de3789de45277c7b",
+  "prereg_sha256": "4875d1258f4a4f06e20b1c699e8424a7c186ad6e123451490647ab53ac01f16c",
+  "kind": "refsize",
+  "corpus": "df21",
+  "detector": "aasist",
+  "seed": 2026,
+  "n_rows": 611829,
+  "created": "2026-10-22 16:29:33"
+}

@@ -1,0 +1,34 @@
+{
+  "published": {
+    "itw_eer": 0.1118,
+    "itw_hter": 0.3949,
+    "la_eer": 0.0021,
+    "tau_la": 4.97
+  },
+  "la_eer": 0.0023140621843753956,
+  "la_eer_official_score": 0.0022827544607600253,
+  "tau_src": 4.5067015,
+  "tau_source": "LA19 eval EER point (this run)",
+  "itw_eer": 0.11205438083474062,
+  "itw_at_tau_src": {
+    "tau": 4.5067015,
+    "frr": 0.7726293643239994,
+    "far": 0.002877454299255247,
+    "hter": 0.38775340931162733
+  },
+  "itw_at_published_tau_4.97": {
+    "tau": 4.97,
+    "frr": 0.7870059610279017,
+    "far": 0.002708192281651997,
+    "hter": 0.3948570766547768
+  },
+  "itw_eer_official_score": 0.11212174267486252,
+  "n_itw": 31779,
+  "n_itw_bona": 19963,
+  "n_itw_spoof": 11816,
+  "G0": {
+    "eer_within_1pt": true,
+    "hter_in_35_45": true,
+    "pass": true
+  }
+}

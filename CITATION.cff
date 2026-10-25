@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use PGA-G software or the archived experimental evidence, please cite this research software and the associated article when published."
+type: software
+title: "PGA-G: Selective Adaptation and Conformal Calibration for Speech Deepfake Detection"
+authors:
+  - family-names: Alqaraleh
+    given-names: Saed
+repository-code: "https://github.com/saed-alqaraleh/when-to-adapt-speech-deepfake-detector"
+url: "https://github.com/saed-alqaraleh/when-to-adapt-speech-deepfake-detector"
+license: MIT
+version: "1.0.0"
+keywords:
+  - speech deepfake detection
+  - selective adaptation
+  - positive-unlabelled learning
+  - conformal calibration
+  - reproducibility

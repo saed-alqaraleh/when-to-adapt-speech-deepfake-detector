@@ -1,0 +1,12 @@
+{
+  "n_tasks": 240,
+  "keys_sha": "e8776595ea8589bc",
+  "dataset": "itw",
+  "plan_sha256": "1ae202c99a8ccad7297e2afd310b3e1e3601d1d6c045867c5cb35d87b998f548",
+  "reps": 20,
+  "n_ref": 1000,
+  "gate": 0.8,
+  "seed": 2026,
+  "n_rows": 31779,
+  "created": "2026-10-21 18:33:49"
+}

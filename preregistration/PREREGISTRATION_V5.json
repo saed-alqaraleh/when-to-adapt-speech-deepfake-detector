@@ -1,0 +1,26 @@
+{
+  "preregistration": {
+    "title": "Split audit and group-aware re-analysis (v5)",
+    "fixed_on": "2026-10-24, before any v5 result (results/v5) existed; inputs are the existing scores and features",
+    "status": "pre-specified validation of the split and calibration design; the original analyses and verdicts are preserved and reported unchanged; v5 adds evidence and changes no earlier verdict",
+    "motivation": "ASVspoof 2021 DF provides no source-recording link and the published counts imply several codec versions per bona fide source; earlier DF analyses treated each file as its own source; in both corpora the reference halves were drawn without source grouping; the gate and the guard reuse the calibration half that sets the anchor",
+    "siblings_df21": "blocks of equal label, speaker, attack and source corpus; candidate pairs whose speech duration after 40 dB trimming (runs/df21trim40_v1) differs by at most 0.10 s; linked if the cosine similarity of SSL-AASIST time-mean XLS-R features is at least theta, theta = 99.9th percentile of the cosine over same-block pairs whose trimmed durations differ by at least 0.50 s (up to 10 random pairs per trial, at most 2,000,000, fixed seed); sources = connected components; reported: theta, cosine distributions, component sizes, linked shares by label, codec and source corpus, and versions per source for ASVspoof-2019-derived bona fide trials",
+    "groups_asv5": "official source groups (protocol column codec_seed), as in every earlier ASVspoof 5 analysis",
+    "designs": {
+      "A_original": "the third test's main cell, primary features (identical references, traffic, halves and folds)",
+      "B_grouped": "same reference; halves assigned by source (random source order, filled to 500); traffic = original traffic without trials whose source is in the reference, spoofs removed at random to keep the spoof share; crossfit, gate, guard and anchors as specified",
+      "C_grouped_independent_calibration": "as B; calibration half split by source into selection (250, gate and guard) and final calibration (250, anchors only)"
+    },
+    "held_out": "per repetition a random sample of up to 5,000 genuine and 20,000 spoofed trials outside the reference and the traffic (A: by the groups of the original analysis; B, C: by source); scored with the fold-averaged adapted model or the frozen score; anchor from the calibration (A, B) or final-calibration (C) recordings scored the same way",
+    "metrics": "EER, anchor FRR (genuine rejection), FAR (spoof acceptance), HTER, shortcut AUC; traffic and held-out",
+    "design_conditions": "main conditions of the third test: both modes, all shares, 20 repetitions, three detectors",
+    "decision": {
+      "robust_to_source_leakage": "per detector and corpus: the PGA-G outcome of each of H1-H5 under B equals the outcome under A, and in every main condition |mean EER(B) - mean EER(A)| <= 0.5 point and |mean FRR(B) - mean FRR(A)| <= 1 point for PGA-G (traffic)",
+      "independent_calibration": "reported without decision: H1-H5 under C, held-out FRR of PGA-G under C (formal bound alpha = 0.05 under exchangeability), paired differences C - B",
+      "reporting": "every result is reported, whatever the outcome"
+    },
+    "statistics": "means over repetitions; paired differences with 95% percentile bootstrap intervals (4,000 resamples)"
+  },
+  "sha256": "2095841f4e2e6d25358790bbb56c99269f12e53b3ab9b3604958980ed852b8c5",
+  "written": "2026-10-24 06:19:34 UTC"
+}

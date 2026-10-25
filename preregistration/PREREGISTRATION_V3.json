@@ -1,0 +1,37 @@
+{
+  "preregistration": {
+    "title": "Generalisation of PGA-G across detectors, and deployment analyses",
+    "fixed_on": "2026-10-22, before any v3 score (runs/v3) or v3 analysis result (results/v3) existed",
+    "prior_evidence": "PGA confirmed on ASVspoof 2021 DF (PREREGISTRATION_PGA.json); PGA-G confirmed on ASVspoof 5 (PREREGISTRATION_ASV5.json); both with the SSL-AASIST detector only",
+    "detectors": {
+      "aasist": "official AASIST trained on ASVspoof 2019 LA (github.com/clovaai/aasist@a04c9863, weights sha256 51d2d9cf...); no self-supervised front end; adaptation features: its 160-d readout",
+      "mamba": "XLSR-Mamba trained on ASVspoof 2019 LA (huggingface.co/AustinXiao/XLSR-Mamba-DF, revision pinned in runs/v3/config.json); adaptation features: time-mean of its fine-tuned XLS-R output (1,024-d); secondary: its 144-d pre-classifier embedding",
+      "sslaasist": "the study's SSL-AASIST, existing scores, reference rows (no decision)"
+    },
+    "scoring": "score = genuine minus spoof logit on the first 64,600 samples (official crop/tile); precision: fastest of bf16/fp16, TF32, fp32 within 0.05 logit of strict fp32; corpora at the revisions pinned by the earlier runs; ASVspoof 2019 LA eval scored to obtain each detector's source threshold (EER threshold)",
+    "reproduction_checks": "AASIST ASVspoof 2019 LA EER against the published 0.83%; XLSR-Mamba ASVspoof 2021 DF per-trial genuine logits against the authors' published score file; reported, not part of the decision",
+    "method": "unchanged: alpha 0.05 fold-matched conformal anchor, 5-fold cross-fitted PU logistic regression (C 0.1, balanced), gate 0.80 on the frozen best-bin estimate, guard 0.5 on the adapted / frozen estimate ratio",
+    "design_main": "as PREREGISTRATION_ASV5.json on both corpora: 1,000-recording reference (500/500), matched and speaker-disjoint modes, traffic min(12,000, available), 20 repetitions; spoof shares ASVspoof 2021 DF 0.05, 0.20, 0.50, 0.80, 0.90, natural 0.963; ASVspoof 5 0.05, 0.20, 0.50, 0.80, 0.90, 0.96, natural 0.796; source-recording groups never split (ASVspoof 5 CODEC_SEED; ASVspoof 2021 DF file)",
+    "hypotheses_per_detector_and_corpus": {
+      "H1_gain": "matched, shares 0.90 and 0.963 (ASVspoof 2021 DF) / 0.90 and 0.96 (ASVspoof 5): mean EER ratio <= 0.85 and mean anchor HTER below the frozen detector's",
+      "H2_no_harm_low_share": "matched, shares 0.05, 0.20, 0.50: mean EER ratio <= 1.02",
+      "H3_no_harm_disjoint": "disjoint, every share: mean EER ratio <= 1.02 and mean anchor FRR <= frozen + 0.01",
+      "H4_genuine_rejection": "matched, every share: mean anchor FRR <= 0.06",
+      "H5_shortcut": "matched, every share: mean shortcut AUC <= 0.60"
+    },
+    "decision": {
+      "G_full_method_on_an_ssl_detector": "XLSR-Mamba: H1-H5 hold on both corpora -> PGA-G generalises to a second self-supervised detector",
+      "S_safety_on_a_non_ssl_detector": "AASIST: H2-H5 hold on both corpora -> the safety of PGA-G generalises to a detector without self-supervised features; AASIST H1 is reported as a secondary result because the adaptation step is specified on self-supervised features and AASIST has none",
+      "reporting": "every hypothesis for every detector and corpus is reported, whatever the outcome"
+    },
+    "deployment_analyses_pre_specified_exploratory": {
+      "size": "traffic of 500, 1,000, 2,000, 5,000 trials (12,000 from main), shares 0.05 and 0.90, both modes, 20 repetitions: EER, anchor FRR, gate and adaptation rates of PGA-G versus the frozen detector",
+      "stream": "matched 1,000-recording reference; 30 consecutive windows of 1,000 trials drawn without replacement; profile 'burst': spoof share 0.05 (windows 1-10), 0.90 (11-20), 0.05 (21-30); profile 'ramp': share rising linearly from 0.05 to 0.95; 10 repetitions; PGA-G decides per window",
+      "refsize": "matched references of 200, 300, 500, 1,000, 2,000 recordings (half for training), share 0.90, 20 repetitions; variants with identical folds: base (C 0.1, all dimensions); 'pca': standardise and project on min(64, n_train/4) principal components fitted on the unlabelled traffic; 'strongC': C 0.01",
+      "tta": "matched, every main share, the same references and traffic as main: (i) information maximisation (SHOT-IM): linear head on standardised features initialised by ridge regression on the frozen score, 200 Adam steps (lr 0.01) minimising mean prediction entropy minus marginal entropy plus 0.001 x squared distance to the initial weights; (ii) pseudo-label self-training: traffic with frozen posterior >= 0.9 labelled genuine and <= 0.1 spoof, cross-fitted logistic regression (C 0.1, balanced), two rounds; fewer than 20 pseudo-labels in a class -> frozen detector; both thresholded with the conformal anchor"
+    },
+    "statistics": "means over repetitions; 95% percentile bootstrap intervals (4,000 resamples, paired by repetition)"
+  },
+  "sha256": "4875d1258f4a4f06e20b1c699e8424a7c186ad6e123451490647ab53ac01f16c",
+  "written": "2026-10-22 14:30:04 UTC"
+}

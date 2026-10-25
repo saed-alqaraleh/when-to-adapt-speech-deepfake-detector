@@ -1,0 +1,25 @@
+{
+  "plan": {
+    "title": "Exploratory robustness analyses R1 for prevalence-gated adaptation (PGA)",
+    "status": "exploratory: planned on 2026-10-21 after the confirmatory ASVspoof 2021 DF verdict (METHOD CONFIRMED) was known, before any robustness result was computed",
+    "splits": "identical to the confirmatory cells (same seeds, reference/traffic draws and fold assignments); added methods draw from an independent random stream",
+    "gate": "estimated spoof share (frozen score) >= 0.80, as pre-registered",
+    "guard": "adapt only if the gate is open AND bona_share(adapted calibration reference vs traffic) >= rho x bona_share(frozen); rho = 0.5 primary; rho in 0.25, 0.5, 0.75, 0.9 reported",
+    "grouped_split": "reference split into train / calibration halves by speaker",
+    "nap": "remove the top k = min(32, n_speakers - 1) principal directions of the train-reference speaker means (speakers with >= 2 clips) from all features before scaling",
+    "pga_r": "PGA-R = NAP + grouped split + gate + guard (rho 0.5), ssl1024 features",
+    "nnpu": "linear nnPU (beta 0, gamma 1), sigmoid loss, class prior = frozen bona-share estimate clipped to [0.01, 0.99], standardised features, full-batch Adam lr 1e-3, 300 steps, weight decay 1e-4, same 5-fold cross-fitting as the confirmatory method",
+    "coral": "frozen AASIST readout (score = w.emb160 + c, recovered by least squares from the stored scores and checked to 1e-2) on traffic-aligned emb160: CORAL (full covariance, eps = 1e-3 x mean variance) and diagonal mean/std alignment, both to ASVspoof 2019 LA eval statistics; alignment estimated on the unlabelled traffic only",
+    "oracle": "supervised upper bound: logistic regression (C 0.1, balanced) on labelled traffic + train reference, 5-fold cross-fitted, ssl1024",
+    "breakdown": "speaker-overlap mode, spoof shares 0.90 and natural, 10 repetitions; frozen vs adapted (fold-averaged confirmatory model) on every clip outside the repetition's reference and traffic; anchor threshold from the calibration reference; subgroups with >= 20 bona fide and >= 20 spoof clips",
+    "criteria": {
+      "fix_works": "PGA-R, speaker-disjoint mode, at every spoof share: mean EER <= 1.02 x frozen and mean anchor FRR <= frozen FRR + 0.01 (never worse than falling back to the frozen detector; the frozen disjoint FRR itself exceeds 6% at some shares)",
+      "gain_kept": "PGA-R, speaker-overlap mode: mean EER <= 0.85 x frozen at the natural share and 0.90; <= 1.02 x frozen at 0.05, 0.20, 0.50; mean anchor FRR <= 0.06 everywhere",
+      "subgroup_flag": "adapted EER exceeds frozen EER by more than 1 point in a subgroup",
+      "cue_flag": "a single cue (duration, leading silence) separates the classes with AUC > 0.70 (either direction)",
+      "silence": "the gain survives trimming if the trimmed PGA (ssl1024) EER ratio at the natural share is <= 0.85"
+    }
+  },
+  "sha256": "1ae202c99a8ccad7297e2afd310b3e1e3601d1d6c045867c5cb35d87b998f548",
+  "written": "2026-10-21 17:57:09 UTC"
+}

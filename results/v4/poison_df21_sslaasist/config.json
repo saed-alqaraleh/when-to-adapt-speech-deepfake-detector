@@ -1,0 +1,10 @@
+{
+  "n_tasks": 720,
+  "keys_sha": "24d25a6d1a37017e",
+  "prereg_sha256": "8c661f44bc6a204f83bc4bc0d17034ad4a134d92752426b639aa6fb3bb822fb8",
+  "kind": "poison",
+  "corpus": "df21",
+  "detector": "sslaasist",
+  "seed": 2026,
+  "created": "2026-10-22 19:21:32"
+}

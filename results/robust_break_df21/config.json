@@ -1,0 +1,12 @@
+{
+  "n_tasks": 20,
+  "keys_sha": "8000453b1df41530",
+  "dataset": "df21",
+  "plan_sha256": "1ae202c99a8ccad7297e2afd310b3e1e3601d1d6c045867c5cb35d87b998f548",
+  "reps": 10,
+  "n_ref": 1000,
+  "seed": 2026,
+  "n_rows": 611829,
+  "has_lead_silence": true,
+  "created": "2026-10-21 20:52:16"
+}

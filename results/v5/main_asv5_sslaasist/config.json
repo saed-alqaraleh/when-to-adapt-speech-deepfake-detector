@@ -1,0 +1,10 @@
+{
+  "n_tasks": 280,
+  "keys_sha": "c42c07eba0a5bf3d",
+  "prereg_sha256": "2095841f4e2e6d25358790bbb56c99269f12e53b3ab9b3604958980ed852b8c5",
+  "corpus": "asv5",
+  "detector": "sslaasist",
+  "seed": 2026,
+  "groups_sha256": "codec_seed",
+  "created": "2026-10-24 06:20:06"
+}

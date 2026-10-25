@@ -1,0 +1,14 @@
+{
+  "historical_protocol_normalization": {
+    "path": "preregistration/PREREGISTRATION_PGA.json",
+    "original_sha256": "d44f2778b2725db45bf2a8b630d04d4a1804773e65c32b2309861c74738c5b2c",
+    "published_derivative_sha256": "8180d9bad1ab04c837bd438678459ebe360c23bd00df7e190089c700e19bdca2",
+    "changes": "Historical working labels were renamed for release. The original remains privately archived. All fixed design parameters and numeric decision thresholds are unaltered."
+  },
+  "immutable_v5": {
+    "path": "preregistration/PREREGISTRATION_V5.json",
+    "file_sha256": "4a40d199dcdd9308bce01ce42fcbfb7a1cb22f91cc20ad0909e52f621007521c",
+    "canonical_object_sha256": "2095841f4e2e6d25358790bbb56c99269f12e53b3ab9b3604958980ed852b8c5"
+  },
+  "source_code_equivalence": "Original source and published source differ only in public identifiers, explanatory prose/path examples and absent non-redistributable model implementations."
+}

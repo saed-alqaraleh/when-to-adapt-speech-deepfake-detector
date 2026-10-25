@@ -1,0 +1,14 @@
+v4 summary
+SSL-AASIST  df21: fail-safe over 22 conditions: max EER ratio 1.000, max HTER ratio 1.000, max FRR increase 0.4 pt
+SSL-AASIST  df21: agnostic guard safety (H2-H5) pass, all H1-H5 pass; own guard safety pass; probe separation 7.40
+SSL-AASIST  asv5: fail-safe over 24 conditions: max EER ratio 1.000, max HTER ratio 1.000, max FRR increase 0.6 pt
+SSL-AASIST  asv5: agnostic guard safety (H2-H5) pass, all H1-H5 pass; own guard safety pass; probe separation 3.30
+AASIST      df21: fail-safe over 22 conditions: max EER ratio 1.019, max HTER ratio 1.003, max FRR increase 18.3 pt
+AASIST      df21: agnostic guard safety (H2-H5) pass, all H1-H5 pass; own guard safety fail; probe separation 15.47
+AASIST      asv5: fail-safe over 24 conditions: max EER ratio 1.000, max HTER ratio 1.000, max FRR increase 1.5 pt
+AASIST      asv5: agnostic guard safety (H2-H5) pass, all H1-H5 fail; own guard safety pass; probe separation 2.09
+XLSR-Mamba  df21: fail-safe over 22 conditions: max EER ratio 1.000, max HTER ratio 1.000, max FRR increase 0.3 pt
+XLSR-Mamba  df21: agnostic guard safety (H2-H5) pass, all H1-H5 pass; own guard safety pass; probe separation 12.01
+XLSR-Mamba  asv5: fail-safe over 24 conditions: max EER ratio 1.000, max HTER ratio 1.000, max FRR increase 0.2 pt
+XLSR-Mamba  asv5: agnostic guard safety (H2-H5) pass, all H1-H5 pass; own guard safety pass; probe separation 3.64
+timing: one decision on 12000 trials x 1,024 dims: 1 thread(s) 26.69 s, all thread(s) 22.69 s

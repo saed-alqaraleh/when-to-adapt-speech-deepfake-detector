@@ -1,0 +1,43 @@
+{
+  "preregistration": {
+    "title": "Confirmatory test of prevalence-gated adaptation with consistency guard (PGA-G) on ASVspoof 5",
+    "fixed_on": "2026-10-22, before any ASVspoof 5 score was computed",
+    "prior_evidence": "ASVspoof 2021 DF (confirmatory for the gate, PGA_VERDICT_df21.json) and exploratory robustness analyses on ASVspoof 2021 DF and In-the-Wild (EXPLORATORY_PLAN_R1.json) in which the guard was specified; this test is the first on data untouched by the study",
+    "data": "ASVspoof 5 evaluation set, track 1 protocol ASVspoof5.eval.track_1.tsv, all ten flac_E tars (huggingface.co/datasets/jungjee/asvspoof5, mirror of Zenodo 10.5281/zenodo.14498691), revision pinned in runs/asv5_v1/config.json",
+    "detector": "authors' SSL-AASIST ASVspoof 2019 LA checkpoint, frozen; score = genuine minus spoof logit; first 64,600 samples",
+    "precision": "fastest of bf16/fp16, TF32, fp32 whose score differs from strict fp32 by at most 0.05 logit on 128 clips",
+    "method": {
+      "primary_features": "time-mean XLS-R (1,024-d); secondary: AASIST readout (160-d)",
+      "classifier": "StandardScaler + LogisticRegression(C=0.1, class_weight=balanced), reference-train=1 vs traffic=0, 5-fold cross-fitting",
+      "anchor": "fold-matched conformal anchor on the calibration reference, alpha = 0.05",
+      "gate": "1 - best-bin genuine-share estimate (frozen score, calibration reference vs traffic) >= 0.80",
+      "guard": "best-bin genuine-share estimate of the adapted score / that of the frozen score >= 0.5",
+      "decision": "adapt only if gate and guard both pass; otherwise frozen score with its conformal anchor"
+    },
+    "design": {
+      "reference": "1,000 genuine recordings, random halves 500 train / 500 calibration",
+      "matched_mode": "reference = random genuine recordings pooled over all speakers",
+      "disjoint_mode": "reference = genuine recordings of a random speaker subset (speakers added until 1,000 are available); traffic excludes every trial of those speakers",
+      "leakage_control": "traffic excludes every trial sharing a source utterance (CODEC_SEED, or the file itself if uncoded) with a reference recording",
+      "traffic": "min(12,000, available) trials per repetition at spoof shares 0.05, 0.20, 0.50, 0.80, 0.90, 0.96 and the natural share",
+      "repetitions": 20,
+      "seeds": "derived from (2026, mode, share, repetition)"
+    },
+    "hypotheses": {
+      "H1_gain": "matched references, spoof shares 0.90 and 0.96: mean EER(PGA-G) <= 0.85 x mean EER(frozen) and mean anchor HTER(PGA-G) < frozen",
+      "H2_no_harm_low_share": "matched references, spoof shares 0.05, 0.20, 0.50: mean EER(PGA-G) <= 1.02 x mean EER(frozen)",
+      "H3_no_harm_disjoint": "disjoint references, every spoof share: mean EER(PGA-G) <= 1.02 x mean EER(frozen) and mean anchor FRR(PGA-G) <= mean anchor FRR(frozen) + 0.01",
+      "H4_genuine_rejection": "matched references, every spoof share: mean anchor FRR(PGA-G) <= 0.06",
+      "H5_shortcut": "matched references, every spoof share: mean shortcut AUC of the scores PGA-G uses <= 0.60",
+      "decision": "H1-H5 all pass -> PGA-G confirmed on ASVspoof 5; otherwise not confirmed (reported in full either way)"
+    },
+    "secondary_analyses_no_decision": [
+      "natural spoof share (about 0.80, at the gate threshold), PGA without guard, readout features",
+      "guard versus number of reference speakers: disjoint references of exactly 10, 20, 40, 80, 160 speakers and a matched control, 300 recordings, spoof share 0.90, 20 repetitions",
+      "held-out breakdown (trials sharing no source utterance with reference or traffic), matched, shares 0.90 and 0.96, 10 repetitions: EER and anchor FRR/FAR by codec and by attack, with Malafide (A18, A20, A23, A30) and Malacopula (A27, A30, A31, A32) attacks reported separately"
+    ],
+    "statistics": "means over repetitions; 95% percentile bootstrap intervals over repetitions (4,000 resamples, paired for ratios)"
+  },
+  "sha256": "3de74bdf7e963b2e936eeab50189ea9628b1d0b7a68bf0dda76b4446f5201ba2",
+  "written": "2026-10-22 06:33:29 UTC"
+}

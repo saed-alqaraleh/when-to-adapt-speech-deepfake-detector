@@ -1,0 +1,12 @@
+{
+  "deviations": {
+    "D1_xlsr_mamba_input_length": {
+      "preregistered": "score on the first 64,600 samples (official crop/tile)",
+      "applied": "XLSR-Mamba is scored on the first 66,800 samples (crop/tile), its authors' evaluation recipe for ASVspoof data (github.com/swagshaw/XLSR-Mamba data_utils.Dataset_eval); AASIST keeps 64,600",
+      "reason": "the preflight check (no score stored) found that the 64,600-sample input does not reproduce the authors' published ASVspoof 2021 DF scores (Pearson r 0.980, max difference 3.9 logits on 256 trials); the authors' recipe is the faithful use of their detector",
+      "decided": "22 Oct 2026, before any v3 score or analysis result was stored",
+      "affects": "XLSR-Mamba scores only; hypotheses, method, thresholds and analyses unchanged"
+    }
+  },
+  "written": "2026-10-22 14:59:12 UTC"
+}

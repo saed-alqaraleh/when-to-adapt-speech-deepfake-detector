@@ -1,0 +1,11 @@
+{
+  "n_tasks": 320,
+  "keys_sha": "8f991198951138d9",
+  "prereg_sha256": "4875d1258f4a4f06e20b1c699e8424a7c186ad6e123451490647ab53ac01f16c",
+  "kind": "size",
+  "corpus": "df21",
+  "detector": "sslaasist",
+  "seed": 2026,
+  "n_rows": 611829,
+  "created": "2026-10-22 15:00:11"
+}

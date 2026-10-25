@@ -1,0 +1,10 @@
+{
+  "n_tasks": 280,
+  "keys_sha": "c42c07eba0a5bf3d",
+  "prereg_sha256": "8c661f44bc6a204f83bc4bc0d17034ad4a134d92752426b639aa6fb3bb822fb8",
+  "kind": "agnostic",
+  "corpus": "asv5",
+  "detector": "mamba",
+  "seed": 2026,
+  "created": "2026-10-22 23:47:10"
+}
